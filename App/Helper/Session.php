@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Helper;
 
 class Session
@@ -7,7 +6,6 @@ class Session
     private static $instances = [];
     private $signedIn = false;
     public $userId;
-    public $userRole; // New
     public $message;
 
     private function __construct()
@@ -15,6 +13,11 @@ class Session
         session_start();
         $this->checkLogin();
         $this->checkMessage();
+    }
+
+    private function __clone()
+    {
+        
     }
 
     public static function getInstance(): Session
@@ -27,19 +30,19 @@ class Session
         return self::$instances[$cls];
     }
 
+
     public function isSignedIn()
     {
         return $this->signedIn;
     }
 
-    private function checkLogin()
+    public function checkLogin()
     {
         if (isset($_SESSION['userId'])) {
             $this->userId = $_SESSION['userId'];
-            $this->userRole = $_SESSION['userRole']; // Store user role in session
             $this->signedIn = true;
         } else {
-            unset($this->userId, $this->userRole);
+            unset($this->userId);
             $this->signedIn = false;
         }
     }
@@ -49,7 +52,6 @@ class Session
         if ($user) {
             $this->userId = $user->id;
             $_SESSION['userId'] = $user->id;
-            $_SESSION['userRole'] = $user->role; // Store the user role
             $this->signedIn = true;
         }
     }
@@ -57,8 +59,7 @@ class Session
     public function logout()
     {
         unset($_SESSION['userId']);
-        unset($_SESSION['userRole']); // Unset role
-        unset($this->userId, $this->userRole);
+        unset($this->userId);
         $this->signedIn = false;
     }
 
@@ -71,7 +72,7 @@ class Session
         }
     }
 
-    private function checkMessage()
+    public function checkMessage()
     {
         if (isset($_SESSION['message'])) {
             $this->message = $_SESSION['message'];
@@ -81,3 +82,4 @@ class Session
         }
     }
 }
+?>
