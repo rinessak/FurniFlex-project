@@ -1,0 +1,42 @@
+{% extends "/layout/appLayout.html" %}
+{% block title %} Edit Company Product {% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="card shadow-lg border-0 rounded-lg mt-3">
+                    <div class="card-header">
+                        <h3 class="text-center font-weight-light my-2">Edit Company Product</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/admin/companyProduct-update">
+                            <div class="form-group">
+                                <label class="small mb-1" for="companies">Company</label>
+                                <select class="form-control" name="company_id" id="companies" required>
+                                    <option value="">Choose a Company</option>
+                                    {% for company in companies %}
+                                        <option value="{{ company.id }}" {% if companyProduct.company_id == company.id %}selected{% endif %}>{{ company.company_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div> 
+                            <div class="form-group">
+                                <input type="hidden" value="{{ companyProduct.id }}" name="id">
+                                <label class="small mb-1" >Product: </label>
+                                <input class="form-control py-4" name="product" type="text" value="{{ companyProduct.product }}" 
+                                placeholder="Enter product" />
+                            </div>
+                            <input class="btn btn-primary"  id="login" value="Edit Company Product" type="submit"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+{% endblock %}

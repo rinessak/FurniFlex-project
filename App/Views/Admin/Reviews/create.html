@@ -1,0 +1,47 @@
+{% extends "layout/appLayout.html" %}
+
+{% block title %}Review Create{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="card shadow-lg border-0 rounded-lg mt-3">
+                    <div class="card-header">
+                        <h3 class="text-center font-weight-light my-2">Add Review</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <form method="post" action="/admin/review-store">
+                            <div class="form-group">
+                                <label class="small mb-1" >Content </label>
+                                <input class="form-control py-4" name="content" type="text" placeholder="Content" />
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" >Rating </label>
+                                <input class="form-control py-4" name="rating" type="number" placeholder="Rating" step="1" min="1" max="5"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1">Username: </label>
+                                <input class="form-control" name="username" value="{{ review.username }}" type="text" placeholder="Enter username" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="companies">Company</label>
+                                <select class="form-control" name="company_id" id="companies"required>
+                                    <option value="">Choose a company</option>
+                                    {% for company in companies %}
+                                    <option value="{{ company.id }}">{{ company.company_name}}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <input class="btn btn-primary" value="Create review" type="submit" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+
+{% endblock %}

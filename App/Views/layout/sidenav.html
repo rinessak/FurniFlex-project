@@ -1,0 +1,131 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">FurniFlex <sup>System</sup></div>
+        </a>
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <hr class="sidebar-divider">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCompanies"
+                aria-expanded="true" aria-controls="collapseCompanies">
+                <i class="fa-solid fa-building"></i>                
+                <span>Companies</span>
+            </a>
+            <div id="collapseCompanies" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Companies:</h6>
+                    <a class="collapse-item" href="/admin/companies">View Companies</a>
+                    <a class="collapse-item" href="/admin/company-create">Add Company</a>
+                    <!-- Nested dropdown -->
+                    <a class="nav-link collapsed text-dark font-weight-bold" href="#" data-toggle="collapse" data-target="#collapseCompanyLocation"
+                        aria-expanded="true" aria-controls="collapseCompanyLocation">
+                        <i class="fa-solid fa-location-dot text-dark"></i>
+                        Company Locations 
+                    </a>
+                    <div id="collapseCompanyLocation" class="collapse" aria-labelledby="headingPages" data-parent="#collapseCompanies">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="/admin/companyLocation">View Locations</a>
+                            <a class="collapse-item" href="/admin/companyLocation-create">Add Location</a>
+                        </div>
+                    </div>
+                    <a class="nav-link collapsed text-dark font-weight-bold" href="#" data-toggle="collapse" data-target="#collapseCompanyPrducts"
+                        aria-expanded="true" aria-controls="collapseCompanyPrducts">
+                        <i class="fa-brands fa-product-hunt text-dark"></i>
+                        Company Products 
+                    </a>
+                    <div id="collapseCompanyPrducts" class="collapse" aria-labelledby="headingPages" data-parent="#collapseCompanies">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="/admin/companyProduct">View Products</a>
+                            <a class="collapse-item" href="/admin/companyProduct-create">Add Product</a>
+                        </div>
+                    </div>
+                    <a class="nav-link collapsed text-dark font-weight-bold" href="#" data-toggle="collapse" data-target="#collapseCompanyServices"
+                        aria-expanded="true" aria-controls="collapseCompanyServices">
+                        <i class="fa-brands fa-servicestack text-dark"></i>
+                        Company Services 
+                    </a>
+                    <div id="collapseCompanyServices" class="collapse" aria-labelledby="headingPages" data-parent="#collapseCompanies">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="/admin/companyService">View Services</a>
+                            <a class="collapse-item" href="/admin/companyService-create">Add Service</a>
+                        </div>
+                    </div>
+                    <a class="nav-link collapsed text-dark font-weight-bold" href="#" data-toggle="collapse" data-target="#collapseCompanyExportTo"
+                        aria-expanded="true" aria-controls="collapseCompanyExportTo">
+                        <i class="fa-solid fa-truck-fast text-dark"></i>                        
+                        Export States 
+                    </a>
+                    <div id="collapseCompanyExportTo" class="collapse" aria-labelledby="headingPages" data-parent="#collapseCompanies">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="/admin/companyExportTo">View Export States</a>
+                            <a class="collapse-item" href="/admin/companyExportTo-create">Add Export States</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+                aria-expanded="true" aria-controls="collapsePages2">
+                <i class="fa-solid fa-star-half-stroke"></i>                
+                <span>Reviews</span>
+            </a>
+            <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Reviews:</h6>
+                    <a class="collapse-item" href="/admin/reviews">View Reviews</a>
+                    <a class="collapse-item" href="/admin/review-create">Add Review</a>
+                </div>
+            </div>
+        </li>
+        
+        
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                aria-expanded="true" aria-controls="collapseUsers">
+                <i class="fas fa-user"></i>
+                <span>Users</span>
+            </a>
+            <div id="collapseUsers" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Users:</h6>
+                    <a class="collapse-item" href="/admin/users">View Users</a>
+                    <a class="collapse-item" href="/admin/user-create">Add User</a>
+                </div>
+            </div>
+        </li>
+
+        
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">

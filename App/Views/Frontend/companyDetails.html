@@ -1,0 +1,241 @@
+{% include 'Frontend/navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>All Products - Furniture Export Platform</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shorcut icon" name="img/png" href="/images/logo1.png">
+    <title>Kompanitë</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 150px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.8em;
+        }
+        #slogan {
+           font-family: 'Brush Script MT';
+           font-size: 25px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .grid-item {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .testimonial {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .testimonial p {
+            margin: 0;
+            font-style: italic;
+        }
+        .testimonial .author {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: right;
+        }
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            font-size: 1.1em;
+        }
+        .contact-info li {
+            margin: 10px 0;
+        }
+        .contact-info li i {
+            margin-right: 10px;
+        }
+        .export-states {
+            background-color: #ccc8c8;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .export-states:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .export-states h3 {
+            margin-top: 0;
+        }
+        .export-states ul {
+            list-style: none;
+            padding: 0;
+            margin: 0%;
+        }
+        .export-states ul li {
+            margin: 5px 0;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                margin: 10px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ company.company_name }}</h1>
+    </div>
+    
+    <div class="container">
+        <div class="logo">
+            <img src=/images/logo.png alt='Company Logo'>
+        </div>
+        
+        <div class="section">
+            <h2>Rreth kompanisë</h2>
+            <p id="slogan">Ne Prodhojmë Lumturi.</p> 
+            <p>{{ company.description }}</p>
+        </div>
+        
+        <div class="section">
+            <h2>Produktet & Shërbimet tona</h2>
+            <div class="grid-container">
+                {% for companyProduct in companyProducts %}
+                    <div class="grid-item">
+                        <h3>{{ companyProduct.product }}</h3>
+                    </div>
+                {% else %}
+                    <p>Asnjë produkt ose shërbim i disponueshëm.</p>
+                {% endfor %}
+                {% if company.website is not empty %}
+                <div class="grid-item">
+                    <h3>Për më shumë klikoni:</h3>
+                    <p><a href="{{ company.website }}" target="_blank">Webfaqja: {{ company.company_name }} </a></p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="section">
+            <h2>Shtetet ku ne eksportojmë produktet tona</h2>
+            <div class="export-states">
+                <ul>
+                    {% if companyExportsTo is empty %}
+                        <li>Nuk ka vende te disponueshme per eksport</li>
+                    {% else %}
+                        {% for companyExportTo in companyExportsTo %}
+                            <li>{{ companyExportTo.state }}</li>  
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>            
+        </div>
+
+        <div class="section">
+            <h2>Vlerësime nga klientët</h2>
+            <div class="section text-start">
+                <div class="average-rating">
+                    <!-- <p><?php echo "<span class='fw-bold'>Vlerësimi Mesatar: </span>" . number_format($average_rating, 2) . " / 5"; ?></p> -->
+                </div>
+            </div>
+            <div class="testimonials">
+                <div class="testimonial text-start">
+                    {% if reviews is empty %}
+                            <p class="text-center">Nuk ka ende ndonje vleresim per kete kompani.</p>
+                    {% else %}
+                        {% for review in reviews %}
+                        <div class="author text-start">{{ review.username  }}</div>
+                        <p>{{ review.content }}</p>
+                        <p class="text-end">⭐ {{ review.rating }} </p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <h3>Rreth nesh</h3>
+                        <p><i class="fas fa-phone"></i>  {{ company.phone_numbers }}</p>
+                        <p><i class="fas fa-envelope"></i>  {{ company.contact_email }}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <h2>Adresa</h2>
+                        <ul class="contact-info">
+                            {% for companyLocation in companyLocations %}
+                            <li><i class="fas fa-map-marker-alt"></i>  {{ companyLocation.address }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+{% include 'Frontend/footer.html' %}
+
+

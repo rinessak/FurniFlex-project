@@ -1,0 +1,107 @@
+{% include 'Frontend/navbar.html' %}
+
+<div class="form-container py-5">
+    <div class="container">
+        <div class="form-wrapper shadow-sm p-4 bg-white rounded">
+            <h2 class="form-title mb-4">Shto vlerësimin tuaj <span class="text-warning">për një kompani</span></h2>
+            <p class="text-muted fst-italic mb-4">
+                Ndihmoni të përmirësojmë shërbimet dhe përvojën tuaj duke lënë një vlerësim për kompaninë që keni bashkëpunuar.
+                Mendimi juaj është i rëndësishëm për ne dhe për të tjerët!
+            </p>
+
+            <form action="/review" method="POST" id="review-form" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Komenti juaj rreth kompanisë <span class="text-danger">*</span></label>
+                    <textarea name="content" id="content" class="form-control" rows="4" required></textarea>
+                    <div class="invalid-feedback">Ju lutemi plotësoni komentin tuaj.</div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="rating" class="form-label">Vlerësimi nga 1 deri 5 <span class="text-danger">*</span></label>
+                        <input type="number" name="rating" id="rating" class="form-control" step="1" min="1" max="5" required />
+                        <div class="invalid-feedback">Ju lutemi vendosni një vlerësim.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="username" class="form-label">Përdoruesi (Username) <span class="text-danger">*</span></label>
+                        <input type="text" name="username" id="username" class="form-control" required />
+                        <div class="invalid-feedback">Ju lutemi plotësoni përdoruesin tuaj.</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="company_name" class="form-label">Kompania <span class="text-danger">*</span></label>
+                    <select name="company_id" id="companies" class="form-select" required>
+                        <option value="">Zgjidh një kompani</option>
+                        {% for company in companies %}
+                        <option value="{{ company.id }}">{{ company.company_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="invalid-feedback">Ju lutemi zgjidhni një kompani.</div>
+                </div>
+
+                <p class="text-muted small">
+                    Duke plotësuar këtë formular dhe duke klikuar submit, ju pranoni <a href="#" class="text-decoration-none">politikat tona të privatësisë</a>.
+                </p>
+
+                <button type="submit" class="btn btn-primary w-100">Dërgo Vlerësimin</button>
+            </form>
+
+            <div id="submission-response"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    // Form Validation
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+
+    const form = document.getElementById('review-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch('/review', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.ok ? 
+            Swal.fire({
+                title: 'Sukses!',
+                text: 'Vlerësimi juaj u dërgua me sukses!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }) :
+            Swal.fire({
+                title: 'Gabim!',
+                text: 'Diçka shkoi keq, ju lutem provoni përsëri.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            })
+        )
+        .catch(() => {
+            Swal.fire({
+                title: 'Gabim!',
+                text: 'Diçka shkoi keq, ju lutem provoni përsëri.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    });
+</script>
+
+{% include 'Frontend/footer.html' %}

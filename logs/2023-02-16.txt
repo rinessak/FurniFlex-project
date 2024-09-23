@@ -1,0 +1,6 @@
+[16-Feb-2023 18:06:35 UTC] Uncaught exception: 'ErrorException' with message 'Constant FILTER_SANITIZE_STRING is deprecated'
+Stack trace: #0 C:\laragon\www\library\App\Controllers\AuthorController.php(34): Core\Error::errorHandler(8192, 'Constant FILTER...', 'C:\\laragon\\www\\...', 34)
+#1 C:\laragon\www\library\Core\Router.php(119): App\Controllers\AuthorController->store()
+#2 C:\laragon\www\library\public\index.php(39): Core\Router->dispatch('authors-store')
+#3 {main}
+Thrown in 'C:\laragon\www\library\App\Controllers\AuthorController.php' on line 34

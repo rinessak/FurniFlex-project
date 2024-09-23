@@ -1,0 +1,73 @@
+{% include 'Frontend/navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Exporting Furniture Abroad Platform</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- Companies -->
+<h1 class="bg-secondary my-0 fw-bold py-4">Furniture Companies</h1>
+<section class="bg-secondary py-4 my-0">
+    <div class="container">
+        {% for company in companies %}
+        <div class="card bg-dark mb-3 company-card">
+            <img src="images/companyLogo.png" class="card-img-top width-75" alt="Company picture">
+            <div class="card-body">
+                <div class="text-section">
+                    <h4 class="card-title">{{ company.company_name }}</h4>
+                    <p class="card-text">{{ company.description | length > 150 ? company.description[:150] ~ '...' : company.description }}</p>
+                </div>
+                <div class="cta-section">
+                    <a href="/companyDetails?id={{ company.id }}" class="font-italic text-info">Me shume rreth kompaninise...</a>
+ 
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center">
+        <button id="showMoreBtn" class="btn btn-primary mt-3">Show More</button>
+        <button id="showLessBtn" class="btn btn-primary mt-3 d-none">Show Less</button>
+    </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- External JavaScript file -->
+<script src="/script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+$(document).ready(function() {
+    $('#showMoreBtn').on('click', function() {
+        $('.company-card.d-none').slice(0, 4).removeClass('d-none');
+        $('#showLessBtn').removeClass('d-none'); // Show the Show Less button
+        if ($('.company-card.d-none').length == 0) {
+            $('#showMoreBtn').hide();
+        }
+    });
+
+    $('#showLessBtn').on('click', function() {
+        $('.company-card').slice(4).addClass('d-none'); // Hide all cards after the first 4
+        $('#showMoreBtn').show(); // Show the Show More button again
+        $('#showLessBtn').addClass('d-none'); // Hide the Show Less button
+    });
+});
+
+</script>
+
+</body>
+</html>
+{% include 'Frontend/footer.html' %}

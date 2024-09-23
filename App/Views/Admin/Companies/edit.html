@@ -1,0 +1,64 @@
+{% extends "/layout/appLayout.html" %}
+
+{% block title %}Company Edit{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header">
+                        <h3 class="text-center font-weight-light my-2">Edit Company</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/admin/company-update">
+                            <div class="form-group">
+                                <label class="small mb-1" for="users">User</label>
+                                <select class="form-control" name="user_id" id="users" required>
+                                    <option value="">Choose a user</option>
+                                    {% for user in users %}
+                                        <option value="{{ user.id }}" {% if company.user_id == user.id %}selected{% endif %}>{{ user.username }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>        
+                            <div class="form-group">
+                                <input type="hidden" value="{{ company.id }}" name="id">
+                                <label class="small mb-1">Company name:</label>
+                                <input class="form-control py-4" name="company_name" value="{{ company.company_name }}" 
+                                type="text" placeholder="Enter company name"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" value="{{ company.id }}" name="id">
+                                <label class="small mb-1">Contact Email: </label>
+                                <input class="form-control py-4" name="contact_email" value="{{ company.contact_email }}" 
+                                type="email" placeholder="Enter contact email"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" value="{{ company.id }}" name="id">
+                                <label class="small mb-1">Phone Numbers: </label>
+                                <input class="form-control py-4" name="phone_numbers" value="{{ company.phone_numbers }}" 
+                                type="text" placeholder="Enter phone number"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" value="{{ company.id }}" name="id">
+                                <label class="small mb-1">Description: </label>
+                                <input class="form-control py-4" name="description" value="{{ company.description }}" 
+                                type="textarea" placeholder="Enter company description"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" value="{{ company.id }}" name="id">
+                                <label class="small mb-1">Website: </label>
+                                <input class="form-control py-4" name="website" value="{{ company.website }}" 
+                                type="text" placeholder="Enter company website link"/>
+                            </div>
+                            <input class="btn btn-primary" value="Edit company" type="submit" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

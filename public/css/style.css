@@ -1,0 +1,461 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body #home-bg{
+    background-image: url(../images/MobileriaBinni.jpg);
+    background-repeat: no-repeat;
+    object-fit: fill;
+    height: 700px;
+    margin: 0;
+    filter: brightness(0.8);
+}
+.bg-img{
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    filter: brightness(0.5);
+    position:absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+nav ul li a:hover {
+    background-color: #ccc;
+}
+
+
+/* Companies start */
+
+.card {
+    flex-direction: row;
+    max-width: 80em;
+    border: 0;
+    background-color: #696969;
+    color: #fff;
+    box-shadow: 0 7px 7px rgba(0, 0, 0, 0.18);
+  }
+  .card img {
+    max-width: 50%;
+    margin: auto;
+    padding: 0.5em;
+    border-radius: 0.7em;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .text-section {
+    max-width: 60%;
+  }
+  .cta-section {
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .cta-section .btn {
+    padding: 0.2em 0.5em;
+    font-size: 1em;
+    color: #696969;
+  }
+  .card-text {
+    letter-spacing: 0.1em;
+  }
+/* Log in start */
+
+.login body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Add position relative to body */
+}
+
+.login body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/MobileriaBinni.jpg'); /* Background image URL */
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px); /* Add blur effect */
+    z-index: -1; /* Ensure the blurry background is behind the content */
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for better readability */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    position: relative; /* Add position relative to contain z-index */
+    z-index: 1; /* Ensure the container appears above the blurry background */
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container form input[type="email"],
+.login-container form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.login-container form input[type="email"]:focus,
+.login-container form input[type="password"]:focus {
+    border-color: #555;
+}
+
+.login-container form button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container form button[type="submit"]:hover {
+    background-color: #555;
+}
+
+.login-container p {
+    margin-top: 20px;
+    color: #666;
+}
+
+.login-container p a {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-container p a:hover {
+    text-decoration: underline;
+}
+
+.login-container .logo {
+    margin-bottom: 20px;
+}
+
+.login-container .logo img {
+    max-width: 100px;
+    height: auto;
+}
+
+
+/* Log in end  */
+
+/* Fillon Forma Kyqu */
+
+.myform h1 {
+    font-size: 2.3em;
+    font-weight: bold;
+  }
+.myform {
+    padding: 2em;
+    max-width: 43%;
+    color: #fff;
+    box-shadow: 10px 10px 10px rgba(192, 192, 192, 0.5);
+}
+.myform img{
+    width: 50%;
+}
+@media (max-width: 576px) {
+    .myform {
+    max-width: 90%;
+    margin: 0 auto;
+    }
+}
+.myform .form-control:focus {
+    box-shadow: inset 0 -1px 0 #7e7e7e;
+}
+.myform .form-control {
+    background-color: inherit;
+    color: #fff;
+    padding-left: 0;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #fff;
+}
+.myform .btn {
+    width: 100%;
+    font-weight: 800;
+    background-color: #fff;
+    border-radius: 0;
+    padding: 0.5em 0;
+}
+.myform  .btn:hover {
+    background-color: inherit;
+    color: #fff;
+    border-color: #fff;
+  }
+.myform  p {
+    text-align: center;
+    padding-top: 2em;
+    color: grey;
+  }
+.myform  p a {
+    color: #e1e1e1;
+    text-decoration: none;
+  }
+.myform  p a:hover {
+    color: #fff;
+  }
+/* Mbaron Forma Kyqu */
+
+/* Common styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center text */
+}
+
+
+/* Product-specific styles */
+#products body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+#comp-header h2{
+    margin-top: 0;
+}
+.companies {
+    margin: 20px; /* Add some bottom margin for spacing */    
+}
+
+.container {
+    max-width: 1000px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 15px; /* Add some padding to the container */
+    box-sizing: border-box; /* Include padding and border in the total width */
+}
+
+.company {
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px; /* Add padding inside the company div */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.company img{
+    width: 50%; /* Ensure images don't exceed their container */
+    height: 20%;
+    border-radius: 8px; /* Add rounded corners to images */
+    margin-bottom: 10px; /* Add some bottom margin for spacing */
+}
+.company-card img{
+    width: 50%;
+}
+.company h2{
+    color: #000000; /* Dark text color */
+    margin-bottom: 10px; /* Add some bottom margin for spacing */
+    font-size: 30px;
+}
+
+.company p {
+    color: #000000; /* Medium text color */
+    margin-bottom: 15px; /* Add some bottom margin for spacing */
+}
+
+.company a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.company a:hover{
+    text-decoration: underline; /* Underline on hover */
+}
+
+.product {
+    border: 1px solid #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.product img{
+    width: 50%;
+}
+
+.product h3 {
+    margin-top: 10px;
+}
+main {
+    padding: 20px;
+}
+#background {
+    background-color: #ccc;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+/* companyDetails- */
+#cb {
+    text-align: left;
+}
+
+/* Search bar */
+.search-container {
+    position: relative;
+    top:  10px;
+    right: 50px;
+    text-align: right;
+}
+
+#searchInput {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Reviews-ratings */
+.star-rating {
+    font-size: 1.5em;
+    color: #d3d3d3;
+    cursor: pointer;
+}
+.star-rating .fa-star.checked {
+    color: #ffd700;
+}
+.search-bar {
+    display: none; /* Highlighted */
+}
+.search-bar.active {
+    display: block; /* Highlighted */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body{
+    color: #484b4d;
+    background:url(../images/bg.png)repeat fixed 0 0 #fff;
+}
+.navbar{
+    border-bottom: #484b4d 3px solid;
+    opacity:0.9;
+}
+.navbar-dark{
+    color: #fff;
+    font-weight: 500;
+}
+.slider-images{
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+}
+.posts,.sidebar{
+    background-color: #ded4c5;
+    border: 1px solid #ded4c5;
+}
+.img-post{
+    max-width: 300px;
+}
+.img-post-small{
+    max-width: 150px;
+}
+#slider{
+    border: #636668 2px solid;
+}
+.border-cover{
+    border-right: #fff 1px solid;
+}
+.media-body{
+    opacity: 0.9;
+}
+.media-body h4 a,.media-body h5 a{
+    color:#fff;
+    font-weight: 600;
+}
+.sidebar h4{
+    color: #fff;
+    border-bottom: 2px #fff solid;
+    padding-bottom: 8px;
+} */
