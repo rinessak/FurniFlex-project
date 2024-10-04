@@ -19,8 +19,8 @@ class CompanyLocationController extends Controller
     }
     public function index()
     {
-        $companies = Company::orderBy('company_name')->get();
-        $companyLocations = CompanyLocation::orderBy('address')->get();
+        $companies = Company::orderBy('id', 'desc')->get();
+        $companyLocations = CompanyLocation::orderBy('id', 'desc')->get();
         // dd($companyLocation);
         View::renderTemplate('Admin/CompanyLocations/index.html', ['companyLocations'=> $companyLocations, 'companies' => $companies]);
 
