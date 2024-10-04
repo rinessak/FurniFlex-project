@@ -19,8 +19,9 @@
                                 <select class="form-control" name="user_id" id="users"required>
                                     <option value="">Choose a user</option>
                                     {% for user in users %}
-                                    <option value="{{ user.id }}">{{ user.username }}
-                                    </option>
+                                        {% if user.role == 'company' %}
+                                            <option value="{{ user.id }}">{{ user.username }}</option>
+                                        {% endif %}
                                     {% endfor %}
                                 </select>
                             </div>
