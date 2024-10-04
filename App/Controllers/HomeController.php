@@ -61,9 +61,9 @@ class HomeController extends Controller
 
         $company = Company::findOrFail($id);
         $companyExportsTo = CompanyExportTo::where('company_id', $id)->get();
-        $companyLocations = CompanyLocation::all();
-        $companyProducts = CompanyProduct::all();
-        $companyServices = CompanyService::all();
+        $companyLocations = CompanyLocation::where('company_id', $id)->get();
+        $companyProducts = CompanyProduct::where('company_id', $id)->get();
+        $companyServices = CompanyService::where('company_id', $id)->get();
         $reviews = Review::where('company_id', $id)->get();
 
         View::renderTemplate('Frontend/companyDetails.html', ['company'=>$company, 'companyExportsTo'=>$companyExportsTo,'companyLocations'=>$companyLocations,
