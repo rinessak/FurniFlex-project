@@ -124,7 +124,7 @@
         </div>
         <h3>Miresevini! Kyquni ne llogarine tuaj</h3>
         {% if message != '' %}
-        <span class="alert-danger py-1 px-2">{{ message }}</span>
+        <span style="color: red;" class="alert-danger py-1 px-2">{{ message }}</span>
         {% endif %}
         <form action="/route/login-store" method="post">
             <input type="email" name="email" placeholder="Email-i" required>
