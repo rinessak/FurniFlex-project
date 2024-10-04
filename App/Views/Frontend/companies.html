@@ -11,33 +11,33 @@
     <title>Exporting Furniture Abroad Platform</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body style="font-family: Arial">
 
 <!-- Companies -->
-<h1 class="bg-secondary my-0 fw-bold py-4">Furniture Companies</h1>
+<h1 class="bg-secondary my-0 fw-bold py-4">Kompanitë e mobiljeve</h1>
 <section class="bg-secondary py-4 my-0">
     <div class="container">
         {% for company in companies %}
-        <div class="card bg-dark mb-3 company-card">
+        <div class="card bg-dark mb-3 company-card {% if loop.index > 4 %}d-none{% endif %}">
             <img src="images/companyLogo.png" class="card-img-top width-75" alt="Company picture">
             <div class="card-body">
                 <div class="text-section">
-                    <h4 class="card-title">{{ company.company_name }}</h4>
+                    <h4 class="card-title fw-bold">{{ company.company_name }}</h4>
                     <p class="card-text">{{ company.description | length > 150 ? company.description[:150] ~ '...' : company.description }}</p>
                 </div>
                 <div class="cta-section">
-                    <a href="/companyDetails?id={{ company.id }}" class="font-italic text-info">Me shume rreth kompaninise...</a>
- 
+                    <a href="/companyDetails?id={{ company.id }}" class="font-italic text-warning">Më shumë rreth kompanisë...</a>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
     <div class="text-center">
-        <button id="showMoreBtn" class="btn btn-primary mt-3">Show More</button>
-        <button id="showLessBtn" class="btn btn-primary mt-3 d-none">Show Less</button>
+        <button id="showMoreBtn" class="btn btn-primary mt-3">Shfaq më shumë</button>
+        <button id="showLessBtn" class="btn btn-primary mt-3 d-none">Shfaq më pak</button>
     </div>
 </section>
+
 
 
 
@@ -51,22 +51,30 @@
 
 <script>
 $(document).ready(function() {
+    var initialShowCount = 4;
+    
+    // Show more button functionality
     $('#showMoreBtn').on('click', function() {
         $('.company-card.d-none').slice(0, 4).removeClass('d-none');
-        $('#showLessBtn').removeClass('d-none'); // Show the Show Less button
+        
+        $('#showLessBtn').removeClass('d-none');
+        
         if ($('.company-card.d-none').length == 0) {
             $('#showMoreBtn').hide();
         }
     });
 
+    // Show less button functionality
     $('#showLessBtn').on('click', function() {
-        $('.company-card').slice(4).addClass('d-none'); // Hide all cards after the first 4
-        $('#showMoreBtn').show(); // Show the Show More button again
-        $('#showLessBtn').addClass('d-none'); // Hide the Show Less button
+        $('.company-card').slice(initialShowCount).addClass('d-none');
+        
+        $('#showMoreBtn').show();
+        
+        $('#showLessBtn').addClass('d-none');
     });
 });
-
 </script>
+
 
 </body>
 </html>
