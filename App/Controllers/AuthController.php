@@ -7,7 +7,6 @@ use App\Models\User;
 use \Core\View;
 use \Core\Controller;
 
-
 class AuthController extends Controller
 {
     public function loginForm()
@@ -19,7 +18,8 @@ class AuthController extends Controller
         }
 
         if (isset($_SESSION['userId'])) {
-            header('Location: /events');
+            header('Location: /companies');
+            exit;
         }
 
         View::renderTemplate('Frontend/login.html', ['message' => $message]);
@@ -33,12 +33,18 @@ class AuthController extends Controller
         $session = Session::getInstance();
 
         if ($user) {
-            $session->login($user);
-            header('Location: admin/dashboard');
-            exit;
+            if ($user->role === 'admin') {
+                $session->login($user);
+                header('Location: /admin/dashboard');
+                exit;
+            } else {
+                $session->message("Your email or password is incorrect");
+                header('Location: /login');
+                exit;
+            }
         }
 
-        $session->message("Your email or password is incorrent");
+        $session->message("Your email or password is incorrect");
         header('Location: /login');
         exit;
     }
@@ -46,12 +52,14 @@ class AuthController extends Controller
     public function logout()
     {
         $session = Session::getInstance();
-        if (!$session->isSignedIn()){
+        if (!$session->isSignedIn()) {
             header('Location: /login');
+            exit;
         }
-
 
         $session->logout();
         header('Location: /');
+        exit;
     }
 }
+
