@@ -43,8 +43,9 @@
                             <div class="form-group">
                                 <input type="hidden" value="{{ company.id }}" name="id">
                                 <label class="small mb-1">Description: </label>
-                                <input class="form-control py-4" name="description" value="{{ company.description }}" 
-                                type="textarea" placeholder="Enter company description"/>
+                                <textarea class="form-control py-4" name="description" 
+                                placeholder="Enter company description">{{ company.description }}</textarea>
+
                             </div>
                             <div class="form-group">
                                 <input type="hidden" value="{{ company.id }}" name="id">
