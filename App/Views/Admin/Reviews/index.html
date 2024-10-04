@@ -40,7 +40,7 @@
                             {% for review in reviews %}
 
                             <tr>
-                                <td>{{ review.content }}</td>
+                                <td>{{ review.content | length > 100 ? review.content[:100] ~ '...' : review.content }}</td>
                                 <td>{{ review.rating }}</td>
                                 <td>{{ review.username }}</td>
                                 <td>{{ review.company.company_name }}</td>
