@@ -31,8 +31,7 @@
                             <div class="form-group">
                                 <input type="hidden" value="{{ companyService.id }}" name="id">
                                 <label class="small mb-1">Description: </label>
-                                <input class="form-control py-4" name="description" value="{{ companyService.description }}" 
-                                type="textarea" placeholder="Enter service description"/>
+                                <textarea class="form-control py-4" name="description" placeholder="Enter service description">{{ companyService.description }}</textarea>
                             </div>
                             <input class="btn btn-primary"  id="login" value="Edit Company Service" type="submit"/>
                         </form>
