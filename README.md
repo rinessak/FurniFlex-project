@@ -2,6 +2,6 @@
 
 <h2>Project is based on mvc pattern</h2>
 
- twig documentation https://twig.symfony.com/ 
+Explore platform online:
 
-Platform website: http://furniflex.great-site.net/
+**[View FurniFlex Platform](http://modulibuletinet.kesug.com/)** 
