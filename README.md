@@ -4,4 +4,4 @@
 
 Explore platform online:
 
-**[FurniFlex Platform]([http://modulibuletinet.kesug.com/])** 
+**[FurniFlex Platform](http://modulibuletinet.kesug.com/)** 
